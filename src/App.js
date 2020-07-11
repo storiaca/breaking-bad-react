@@ -15,17 +15,17 @@ function App() {
       const result = await axios.get(
         `https://www.breakingbadapi.com/api/characters?name=${query}`
       );
-      console.log(result.data);
+      //console.log(result.data);
       setItems(result.data);
       setIsLoading(false);
     };
     fetchItems();
-  }, []);
+  }, [query]);
 
   return (
     <div className="container">
       <Header />
-      <Search />
+      <Search getQuery={(q) => setQuery(q)} />
       <CharacterGrid isLoading={isLoading} items={items} />
     </div>
   );
